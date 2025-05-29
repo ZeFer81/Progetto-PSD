@@ -90,27 +90,6 @@ Data data_odierna(void) {
 }
 
 
-
-/*int data_valida(Data d) {
-    // Verifica intervallo anno (1900–3000)
-    if (d->anno < 1900 || d->anno > 3000)
-        return 0;
-
-    // Verifica intervallo mese (1–12)
-    if (d->mese < 1 || d->mese > 12)
-        return 0;
-
-    // Giorni massimi per ogni mese
-    int mdays[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
-
-    // Aggiusta febbraio se anno bisestile
-    if ((d->anno % 4 == 0 && d->anno % 100 != 0) || (d->anno % 400 == 0))
-        mdays[2] = 29;
-
-    // Controlla giorno nel range valido per il mese
-    return (d->giorno >= 1 && d->giorno <= mdays[d->mese]);
-}*/
-
 void stampa_data(Data d) {
     // Stampa la data in formato gg/mm/aaaa
     printf("%02d/%02d/%04d", d->giorno, d->mese, d->anno);
