@@ -6,6 +6,7 @@ Ore stimate : 4.00
 Priorità    : 2
 Avanzamento : completata
 
+
 === In corso ===
 Descrizione : Esercizi
 Corso       : Analisi
@@ -14,6 +15,7 @@ Ore stimate : 1.50
 Priorità    : 1
 Avanzamento : in corso
 
+
 === In ritardo ===
 Descrizione : Tesina
 Corso       : Storia
@@ -21,4 +23,5 @@ Scadenza    : 10/03/2028
 Ore stimate : 6.00
 Priorità    : 3
 Avanzamento : in ritardo
+
 
