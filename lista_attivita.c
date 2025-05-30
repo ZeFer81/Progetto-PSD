@@ -1,5 +1,3 @@
-/* lista_attivita.c */
-
 #include "lista_attivita.h"
 #include "list.h"
 #include "data.h"
@@ -74,7 +72,7 @@ void lista_attivita_set_avanzamento(lista_attivita lista, int idx, char* nuovo_s
 }
 
 /* Selezione interattiva di indice da tastiera */
-static size_t scegli_indice(lista_attivita lista, const char* prompt) {
+size_t scegli_indice(lista_attivita lista, const char* prompt) {
     size_t n = lista_attivita_size(lista);
     if (n == 0) {
         printf("Lista vuota\n");

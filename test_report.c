@@ -8,7 +8,7 @@ int main(){
         "TC2_report_output.txt",
         "TC2_report_oracle.txt",
         "TC2_report");
-
+    // Tc3 campo Descrizione corso vuota
     genera_report_test("TC3_report.txt",
         "TC3_report_output.txt",
         "TC3_report_oracle.txt",
