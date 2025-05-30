@@ -7,11 +7,11 @@ TC6_inserimento    – Priorità fuori range                                TC6_
 TC7_inserimento    – Campo avanzamento vuoto                             TC7_inserimento– PASS
 TC8_inserimento    – Buffer overflow su descrizione/corso (>128 caratteri) TC8_inserimento– PASS
 
-TC1_report         – Report con attività in tutti e tre gli stati        TC1_report– PASS
+TC1_report         – Report con attività valide			        TC1_report– PASS
 TC2_report         – Report con nessuna attività                          TC2_report– PASS
-TC3_report         – Report con attività solo in uno stato                TC3_report– PASS
+TC3_report         – Report con descrizione vuota	                TC3_report– PASS
 
-TC1_avanzamento    – Segna completata attività “in corso”                TC1_report– PASS
-TC2_avanzamento    – Segna in ritardo attività “in corso”                TC2_report– PASS
+TC1_avanzamento    – Segna attività “in corso”                		TC1_report– PASS
+TC2_avanzamento    – Segna in ritardo attività “completata”                TC2_report– PASS
 TC3_avanzamento    – Ripristina in corso attività “in ritardo”            TC3_report– PASS
-TC4_avanzamento    – Indice non valido per cambio stato                   TC4_report– PASS
+TC4_avanzamento    – Input non valido per cambio stato                   TC4_report– PASS
