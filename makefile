@@ -1,5 +1,11 @@
-all : studio_manager.exe test_report.exe test_inserimento.exe
+all : studio_manager.exe test_report test_inserimento test_avanzamento
 
+tests: test_report.exe test_inserimento.exe test_avanzamento.exe
+
+all_test: tests
+	./test_inserimento.exe
+	./test_report.exe
+	./test_avanzamento.exe
 studio_manager.exe : data tempo attivita_di_studio item-attivita_di_studio lista list utils main
 	gcc data.o tempo.o attivita_di_studio.o main.o utils.o\
 	    item-attivita_di_studio.o list.o lista_attivita.o \
@@ -20,6 +26,15 @@ test_report.exe : list utils data tempo attivita_di_studio item-attivita_di_stud
     	    item-attivita_di_studio.o lista_attivita.o \
     	    test_report.o funzione_test.o\
     	    -o test_report.exe
+test_avanzamento.exe : list utils data tempo attivita_di_studio item-attivita_di_studio lista test_avanzamento funzione_test
+	gcc list.o utils.o data.o tempo.o attivita_di_studio.o \
+    	    item-attivita_di_studio.o lista_attivita.o \
+    	    test_avanzamento.o funzione_test.o\
+    	    -o test_avanzamento.exe
+
+test_avanzamento :
+	gcc -c test_avanzamento.c
+
 
 test_report :
 	gcc -c test_report.c
