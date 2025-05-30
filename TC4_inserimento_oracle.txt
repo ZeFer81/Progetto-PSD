@@ -1,0 +1,18 @@
+Compiti logica
+
+7 7 2025
+1.20
+2
+in corso
+Studio diritto
+Diritto
+22 4 2027
+2.00
+3
+completata
+Ripasso latino
+Latino
+15 9 2029
+1.50
+1
+in ritardo

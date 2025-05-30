@@ -1,0 +1,18 @@
+Compiti matematica
+Matematica Generale
+32 4 2025
+1.00
+2
+in corso
+Compiti inglese
+Lingua Inglese
+20 5 1899
+2.00
+1
+completato
+Studio storia
+Storia Moderna
+10 6 2025
+3.00
+3
+in ritardo
