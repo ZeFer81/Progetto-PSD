@@ -1,4 +1,4 @@
-
+all : studio_manager.exe test_report.exe test_inserimento.exe
 
 studio_manager.exe : data tempo attivita_di_studio item-attivita_di_studio lista list utils main
 	gcc data.o tempo.o attivita_di_studio.o main.o utils.o\
@@ -15,7 +15,14 @@ test_inserimento.exe : list utils data tempo attivita_di_studio item-attivita_di
 test_inserimento :
 	gcc -c test_inserimento.c
 
+test_report.exe : list utils data tempo attivita_di_studio item-attivita_di_studio lista test_report funzione_test
+	gcc list.o utils.o data.o tempo.o attivita_di_studio.o \
+    	    item-attivita_di_studio.o lista_attivita.o \
+    	    test_report.o funzione_test.o\
+    	    -o test_report.exe
 
+test_report :
+	gcc -c test_report.c
 
 funzione_test :
 	gcc -c funzione_test.c
@@ -46,9 +53,11 @@ main :
 
 clean :
 	del debug.txt result.txt TC1_avanzamento_output.txt TC1_inserimento_output.txt TC1_report_output.txt \
-        		TC2_inserimento_output.txt \
-        		TC3_inserimento_output.txt \
-        		TC4_inserimento_output.txt \
-        		TC5_inserimento_output.txt \
-        		TC6_inserimento_output.txt *.o *.exe
+        		TC2_inserimento_output.txt TC2_report_output.txt\
+        		TC3_inserimento_output.txt TC3_report_output.txt\
+        		TC4_inserimento_output.txt TC4_report_output.txt\
+        		TC5_inserimento_output.txt TC5_report_output.txt\
+        		TC6_inserimento_output.txt TC6_report_output.txt\
+        		TC7_inserimento_output.txt TC7_report_output.txt\
+        		TC8_inserimento_output.txt TC8_report_output.txt *.o *.exe
 

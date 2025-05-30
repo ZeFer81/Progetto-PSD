@@ -10,4 +10,5 @@ void run_test( char *tc_name,
                       char *input_file,
                       char *output_file,
                       char *oracle_file);
+void genera_report_test(char* input_file, char* output_file,char* oracle, char* TC);
 #endif //FUNZIONE_TEST_H
