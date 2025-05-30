@@ -1,11 +1,12 @@
 all : studio_manager.exe test_report test_inserimento test_avanzamento
 
-tests: test_report.exe test_inserimento.exe test_avanzamento.exe
+test: all test
 
-all_test: tests
+test:
 	./test_inserimento.exe
 	./test_report.exe
 	./test_avanzamento.exe
+
 studio_manager.exe : data tempo attivita_di_studio item-attivita_di_studio lista list utils main
 	gcc data.o tempo.o attivita_di_studio.o main.o utils.o\
 	    item-attivita_di_studio.o list.o lista_attivita.o \
