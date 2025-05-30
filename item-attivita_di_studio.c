@@ -336,7 +336,7 @@ Item inputItem() {
     generic_input_control_Data(att,g,m,a,"inserisci data di scadenza es ",MASS_AVANZAMENTO,attivita_set_data_scadenza,attivita_get_data_scadenza);
 
     float tempo_stimato_ore;
-    generic_input_control_float(att,tempo_stimato_ore,MIN_TEMPO_ORE,MASS_TEMPO_ORE,"Inserire tempo stimao al completamento dell'attivita: ",attivita_set_tempo_stimato,attivita_get_tempo_stimato);
+    generic_input_control_float(att,tempo_stimato_ore,MIN_TEMPO_ORE,MASS_TEMPO_ORE,"Inserire tempo stimao al completamento dell'attivita (es 50) inserire solo numero: ",attivita_set_tempo_stimato,attivita_get_tempo_stimato);
 
     int priorita;
     generic_input_int_range(att, priorita, MIN_PRIORITA, MASS_PRIORITA, "Inserire priorità (1 a 3) '1 = Alta, 2 = Media, 3 = Bassa: ", attivita_set_priorita, attivita_get_priorita);

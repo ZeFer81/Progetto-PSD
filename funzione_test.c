@@ -237,19 +237,23 @@ void genera_report_test(char* input_file, char* output_file,char* oracle, char* 
 }
 
 
-void test_avanzamento(char* input_file, char* output_file, char* oracle, char* TC,
-                      bool (*setter)(AttivitaDiStudio, char*), char* stato) {
+void test_avanzamento(char* input_file, char* output_file, char* oracle, char* TC, void (*segna)(lista_attivita,int,char*),char* stato) {
     lista_attivita L = lettura_lista(input_file);
     int n = lista_attivita_size(L);
 
     for (int i = 0; i < n; i++) {
-        AttivitaDiStudio att = lista_attivita_get(L, i);
+       /* AttivitaDiStudio att = lista_attivita_get(L, i);
         if (!att) {
             libera_lista(L);  // Libera la memoria prima di uscire!
             return;
-        }
-        setter(att, stato);  // Applica il setter all’attività
+        }*/
+
+        segna(L,i,stato);
+        //setter(att, stato);  // Applica il setter all’attività
     }
+
+
+
     scrittura_lista(output_file, L);
     confronta_file(oracle, output_file, TC);
     libera_lista(L);  // Libera la memoria alla fine!

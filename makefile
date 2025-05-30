@@ -68,9 +68,9 @@ main :
 
 clean :
 	del debug.txt result.txt TC1_avanzamento_output.txt TC1_inserimento_output.txt TC1_report_output.txt \
-        		TC2_inserimento_output.txt TC2_report_output.txt\
-        		TC3_inserimento_output.txt TC3_report_output.txt\
-        		TC4_inserimento_output.txt TC4_report_output.txt\
+        		TC2_inserimento_output.txt TC2_report_output.txt TC2_avanzamento_output.txt\
+        		TC3_inserimento_output.txt TC3_report_output.txt TC3_avanzamento_output.txt\
+        		TC4_inserimento_output.txt TC4_report_output.txt TC4_avanzamento_output.txt\
         		TC5_inserimento_output.txt TC5_report_output.txt\
         		TC6_inserimento_output.txt TC6_report_output.txt\
         		TC7_inserimento_output.txt TC7_report_output.txt\

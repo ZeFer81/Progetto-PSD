@@ -288,4 +288,5 @@ void stampa_attivita(AttivitaDiStudio a) {
     printf("\nOre stimate : %.2f\n", a->tempo_stimato_ore);
     printf("Priorità    : %d\n", a->priorita);
     printf("Avanzamento : %s\n", a->avanzamento);
+    printf("\n");
 }
