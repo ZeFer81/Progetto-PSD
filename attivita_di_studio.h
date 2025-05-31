@@ -28,12 +28,14 @@ typedef struct attivita_di_studio *AttivitaDiStudio;
  * Ritorna:
  *   Puntatore AttivitaDiStudio o NULL se errore.
  */
-AttivitaDiStudio crea_attivita_di_studio(char* descrizione,
-                                         char* corso,
-                                         Data data_di_scadenza,
-                                         float tempo_stimato_ore,
-                                         int priorita,
-                                         const char* avanzamento);
+AttivitaDiStudio crea_attivita_di_studio(
+    char* descrizione,
+    char* corso,
+    Data data_di_scadenza,
+    Data data_di_creazione,
+    float tempo_stimato_ore,
+    int priorita,
+    const char* avanzamento);
 
 /*
  * Funzione: distruggi_attivita
@@ -110,6 +112,7 @@ char* attivita_get_corso(AttivitaDiStudio a);
  *   Oggetto Data.
  */
 Data attivita_get_data_scadenza(AttivitaDiStudio a);
+Data attivita_get_data_di_creazione(AttivitaDiStudio a);
 
 /*
  * Funzione: attivita_get_tempo_stimato

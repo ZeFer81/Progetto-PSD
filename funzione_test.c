@@ -91,7 +91,8 @@ lista_attivita lettura_lista(char *nome_file_ingresso) {
 
         // Se siamo arrivati qui, tutti i dati sono ok
         AttivitaDiStudio att = crea_attivita_di_studio(
-            descrizione, corso, crea_data(g, m, a), ore, priorita, stato);
+            descrizione, corso, crea_data(g, m, a),
+            data_creazione(),ore, priorita, stato);
         if (!att) {
             //printf("DEBUG: Errore creazione attività (attività %d)\n", num_attivita);
             continue;

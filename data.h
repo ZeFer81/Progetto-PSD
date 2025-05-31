@@ -208,5 +208,14 @@ int data_get_mese(Data d);
  */
 int data_get_anno(Data d);
 
+int data_get_secondi(Data d);
+
+int data_get_minuti(Data d);
+
+int data_get_ore(Data d);
+
+Data data_creazione(int giorno, int mese, int anno, int secondi, int minuti, int ore);
+Data data_odierna_creazione(void);
+
 
 #endif // DATA_H

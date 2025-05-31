@@ -7,9 +7,9 @@ test:
 	./test_report.exe
 	./test_avanzamento.exe
 
-studio_manager.exe : data tempo attivita_di_studio item-attivita_di_studio lista list utils main
-	gcc data.o tempo.o attivita_di_studio.o main.o utils.o\
-	    item-attivita_di_studio.o list.o lista_attivita.o \
+studio_manager.exe : data tempo attivita_di_studio item-attivita_di_studio lista list utils database funzione_test main
+	gcc data.o tempo.o attivita_di_studio.o main.o utils.o database.o\
+	    item-attivita_di_studio.o list.o lista_attivita.o funzione_test.o \
 	    -o studio_manager.exe
 
 
@@ -64,11 +64,14 @@ list :
 utils :
 	gcc -c utils.c
 
+database:
+	gcc -c database.c
+
 main :
 	gcc -c main.c
 
 clean :
-	del debug.txt result.txt TC1_avanzamento_output.txt TC1_inserimento_output.txt TC1_report_output.txt \
+	rm -f debug.txt result.txt TC1_avanzamento_output.txt TC1_inserimento_output.txt TC1_report_output.txt \
         		TC2_inserimento_output.txt TC2_report_output.txt TC2_avanzamento_output.txt\
         		TC3_inserimento_output.txt TC3_report_output.txt TC3_avanzamento_output.txt\
         		TC4_inserimento_output.txt TC4_report_output.txt TC4_avanzamento_output.txt\

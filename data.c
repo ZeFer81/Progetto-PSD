@@ -2,11 +2,13 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 struct data{ //struc data per la crezione di data_di_scadenza per i file attivita_di_studio
     int giorno;
     int mese;
     int anno;
+    int secondi;
+    int minuti;
+    int ore;
 };
 
 static long data_to_jdn(const struct data *d) {
@@ -45,7 +47,30 @@ Data crea_data(int giorno, int mese, int anno) {
 
     return d;
 }
+Data data_creazione(int giorno, int mese, int anno, int secondi, int minuti, int ore) {
+    // Alloca memoria per una nuova struct data
+    Data d = malloc(sizeof *d);
+    if (!d) {
+        printf("Errore malloc\n");
+        return NULL;
+    }
 
+    // Inizializza i campi giorno, mese e anno
+    d->giorno = giorno;
+    d->mese   = mese;
+    d->anno   = anno;
+    d->secondi = secondi;
+    d->minuti = minuti;
+    d->ore   = ore;
+
+    // Verifica che la data sia valida
+    if (!data_valida(d)) {
+        printf("Errore data non valida\n");
+        free(d);
+    }
+
+    return d;
+}
 
 void distruggi_data(Data d) {
     if (!d) return; //controlla se il puntatore è diverso da NULL libera la memoria per struct Data
@@ -85,8 +110,22 @@ Data data_odierna(void) {
     return crea_data(
         tm_oggi->tm_mday,
         tm_oggi->tm_mon + 1,
-        tm_oggi->tm_year + 1900
-    );
+        tm_oggi->tm_year + 1900);
+}
+Data data_odierna_creazione(void) {
+    // Ottiene il timestamp attuale
+    time_t now = time(NULL);
+    /* Converte il timestamp nel fuso locale (giorno, mese, anno)
+       timestamp: secondi trascorsi dall’epoch Unix (1 gen 1970 00:00:00 UTC)*/
+    struct tm *tm_oggi = localtime(&now);
+    // Crea una Data con giorno, mese (0–11 → 1–12) e anno (da 1900)
+    return data_creazione(
+        tm_oggi->tm_mday,
+        tm_oggi->tm_mon + 1,
+        tm_oggi->tm_year + 1900,
+        tm_oggi->tm_sec,
+        tm_oggi->tm_min,
+        tm_oggi->tm_hour);
 }
 
 
@@ -115,6 +154,17 @@ int data_get_mese(Data d) {
 int data_get_anno(Data d) {
     return d->anno;
 }
+int data_get_secondi(Data d) {
+    return d->secondi;
+}
+
+int data_get_minuti(Data d) {
+    return d->minuti;
+}
+
+int data_get_ore(Data d) {
+    return d->ore;
+}
 
 int data_valida(Data d) {
 
@@ -138,6 +188,16 @@ int data_valida(Data d) {
 
     // Controllo giorno
     if (d->giorno < 1 || d->giorno > mdays[d->mese]) {
+        return 0;
+    }
+
+    if (d->secondi <0 || d->secondi > 60) {
+        return 0;
+    }
+    if (d->minuti <0 || d->minuti > 59) {
+        return 0;
+    }
+    if (d->ore <0 || d->ore > 23) {
         return 0;
     }
 

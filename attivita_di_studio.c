@@ -32,6 +32,7 @@ struct attivita_di_studio {
     char * descrizione;
     char * corso;
     Data  data_di_scadenza;
+    Data data_di_creazione;
     float tempo_stimato_ore;
     int   priorita;
     char * avanzamento;
@@ -55,6 +56,7 @@ AttivitaDiStudio crea_attivita_di_studio(
     char* descrizione,
     char* corso,
     Data data_di_scadenza,
+    Data data_di_creazione,
     float tempo_stimato_ore,
     int priorita,
     const char* avanzamento) {
@@ -72,6 +74,12 @@ AttivitaDiStudio crea_attivita_di_studio(
         fprintf(stderr, "Errore: data di scadenza non valida\n");
         return NULL;
     }
+
+    if (!data_valida(data_di_creazione)) {
+        fprintf(stderr, "Errore: data di creazione non valida\n");
+        return NULL;
+    }
+
     if (tempo_stimato_ore < MIN_TEMPO_ORE || tempo_stimato_ore > MAX_TEMPO_ORE) {
         fprintf(stderr, "Errore: tempo stimato (%.2f) fuori range\n",
                 tempo_stimato_ore);
@@ -94,6 +102,7 @@ AttivitaDiStudio crea_attivita_di_studio(
     a->descrizione       = strdup(descrizione);
     a->corso             = strdup(corso);
     a->data_di_scadenza  = data_di_scadenza;
+    a->data_di_creazione  = data_di_creazione;
     a->tempo_stimato_ore = tempo_stimato_ore;
     a->priorita          = priorita;
     a->avanzamento       = strdup(avanzamento);
@@ -136,6 +145,9 @@ char* attivita_get_corso(AttivitaDiStudio a) {
 }
 Data attivita_get_data_scadenza(AttivitaDiStudio a) {
     return a ? a->data_di_scadenza : NULL;
+}
+Data attivita_get_data_di_creazione(AttivitaDiStudio a) {
+    return a ? a->data_di_creazione : NULL;
 }
 float attivita_get_tempo_stimato(AttivitaDiStudio a) {
     return a ? a->tempo_stimato_ore : 0.10f;
@@ -212,6 +224,15 @@ bool attivita_set_priorita(AttivitaDiStudio a, int priorita) {
     return true;
 }
 
+bool attivita_set_data_creazione(AttivitaDiStudio a, Data data_creazione) {
+
+    if (!a || !data_creazione || !data_valida(data_creazione)) return false;
+
+    a->data_di_scadenza = data_creazione;
+    return true;
+
+
+}
 /*
  * Funzione: attivita_set_avanzamento
  * ----------------------------------

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "lista_attivita.h"
 #include "item-attivita_di_studio.h"
-#include <string.h>
+#include "database.h"
 
 /* ---------------------------------------------------------- */
 /* Pulisce lo schermo su Windows / Unix */
@@ -37,13 +37,13 @@ static int leggi_int(const char *prompt, int min, int max, int *out) {
 
 /* ---------------------------------------------------------- */
 int main(void) {
-
     /* 1 – Creo la lista una sola volta */
     lista_attivita lista = crea_lista_attivita();
     if (!lista) {
         fprintf(stderr, "Errore: impossibile inizializzare la lista.\n");
         return EXIT_FAILURE;
     }
+
 
     int scelta = 0;
     while (scelta != 9) {
@@ -76,19 +76,21 @@ int main(void) {
                 puts("Inserimento annullato o dati non validi.");
             } else {
                 aggiungi_attivita(lista, (AttivitaDiStudio)it);
+                int LI = lista_attivita_size(lista);
                 printf("Attività aggiunta! Totale: %d\n", lista_attivita_size(lista));
+                scrittura_database(it, creazione_database("database.dat"),creazione_file_singolo(concatena(gen_ind_file(LI),LI),LI));
             }
             break;
         }
         /* -------------------------------------------------- */
         case 2:   /* Segna completata */
-            stampa_elenco_attivita(lista);
-            segna_completata_interattivo(lista);
+            stampa_elenco_attivita(lettura_database("database.dat",lista,lista_attivita_size(lista)));
+            segna_completata_interattivo(lettura_database("database.dat",lista,lista_attivita_size(lista)));
             break;
 
         case 3:   /* Report */
             clear_screen();
-            genera_report(lista);
+            genera_report(lettura_database("database.dat",lista,lista_attivita_size(lista)));
             break;
 
         case 4:   /* Aggiorna automaticamente gli stati in ritardo */
@@ -97,13 +99,13 @@ int main(void) {
             break;
 
         case 5:   /* Segna manualmente in ritardo */
-            stampa_elenco_attivita(lista);
-            segna_ritardo_interattivo(lista);
+            stampa_elenco_attivita(lettura_database("database.dat",lista,lista_attivita_size(lista)));
+            segna_ritardo_interattivo(lettura_database("database.dat",lista,lista_attivita_size(lista)));
             break;
 
         case 6:   /* Riporta in corso */
-            stampa_elenco_attivita(lista);
-            segna_in_corso_interattivo(lista);
+            stampa_elenco_attivita(lettura_database("database.dat",lista, lista_attivita_size(lista)));
+            segna_in_corso_interattivo(lettura_database("database.dat",lista, lista_attivita_size(lista)));
             break;
 
         /* ----------   ELIMINA ATTIVITÀ   ---------- */
@@ -112,16 +114,17 @@ int main(void) {
                 puts("La lista è vuota.");
                 break;
             }
-            stampa_elenco_attivita(lista);
+            //stampa_elenco_attivita(lettura_database("database.dat",lista,));
 
             int idx;
             if (!leggi_int("Indice da eliminare: ", 0,
-                           (int)lista_attivita_size(lista) - 1, &idx)) {
+                           (int)lista_attivita_size(lettura_database("database.dat",lista,lista_attivita_size(lista))) - 1, &idx)) {
                 puts("Indice non valido.");
                 break;
             }
-            AttivitaDiStudio a = lista_attivita_get(lista, idx);
-            elimina_attivita(lista, a);
+            //AttivitaDiStudio a = lista_attivita_get(lettura_database("database.dat",lista), idx);
+            eliminta_dal_database( "database.dat", lista);
+            //elimina_attivita(lettura_database("database.dat",lista), a);
             puts("Attività eliminata.");
             break;
         }

@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 struct lista_attivita {
     List intern;  // lista interna di AttivitaDiStudio
 };

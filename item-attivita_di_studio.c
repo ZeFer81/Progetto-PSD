@@ -320,8 +320,12 @@ Item inputItem() {
     char corso[MASS_STR];
 
     AttivitaDiStudio att = crea_attivita_di_studio(
-        "", "", data_odierna(), MIN_TEMPO_ORE, 0, "in corso"
-    );
+        "",
+        "", data_odierna(),
+        data_odierna_creazione() ,
+        MIN_TEMPO_ORE,
+        0,
+        "in corso");
     if (!att) return NULL;
 
     generic_str_set(descrizione,"Inerisci descrizione del corso: ",MASS_STR, att, attivita_set_descrizione,attivita_get_descrizione);
